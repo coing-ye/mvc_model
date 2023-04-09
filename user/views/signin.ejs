@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <%- include('include/include', { title: '로그인' })%>
+  <body>
+    <h1>로그인</h1>
+    <!-- 
+      [로그인] 버튼을 클릭하면 profile.ejs에서 특정 유저 정보를 보여주어야 하기 때문에 
+      userid 정보를 value에 저장(POST /user/signin 요청의 응답을 받은 후 수행)하여
+      폼(input)이 보이지 않도록 hidden 처리함
+    -->
+    <form name="form_info" action="/user/profile" method="POST">
+      <input type="hidden" name="userid" />
+    </form>
+
+    <form name="form_login">
+      <label for="userid">ID</label>
+      <input id="userid" type="text" name="userid" value = "root" required /><br />
+      <label for="password">Password</label>
+      <input id="password" type="password" name="pw" value ="4321" required /><br />
+      <button type="button" onclick="login();">Login</button>
+    </form>
+
+
+    <a href="signup">Register</a>
+
+    <script>
+      // POST /user/signin
+      function login() {
+        const form_login = document.forms['form_login'];
+        const form_info = document.forms['form_info'];
+        axios({
+          method: "POST",
+          url: '/user/signin/login',
+          data:{
+            userid: form_login.userid.value,
+            pwd: form_login.pw.value,
+          }
+        }).then((res) =>{
+          if(res.data == "Success"){
+            form_info.userid.value = form_login.userid.value;
+            console.log(form_info.userid.value);
+            form_info.submit();
+          }
+          else if(res.data ==false){
+            alert("아이디가 존재하지 않습니다! 회원가입을 해주세요.");
+            form_login.reset();
+          }
+          else if(res.data =="Fail"){
+            alert("로그인 실패! 아이디와 비밀번호를 확인해주세요");
+            form_login.reset();
+          }
+        })
+      }
+    </script>
+  </body>
+</html>

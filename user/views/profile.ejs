@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <%- include('include/include', { title: '회원 정보' })%>
+  <body>
+    <h1>회원 정보</h1>
+    <a href="/user">HOME</a>
+    <p>ID 수정 불가능, Password, Name 수정 가능</p>
+
+
+    <form name="form_profile">
+      <label for="userid">ID</label>
+      <input type="hidden" id="id" value="" />
+      <!-- readonly: userid는 수정 불가능 (조건임) -->
+      <input id="userid" type="text" name="userid" value= "<%= data.userid %>" readonly /><br />
+      <label for="password">Password</label>
+      <input id="password" type="password" name="pw" value="" required /><br />
+      <label for="name">Name</label>
+      <input id="name" type="text" name="name" value="" required /><br />
+      <button type="button" onclick="profileEdit();">Edit</button>
+      <button type="button" onclick="profileDelete();">Delete</button>
+    </form>
+
+    <script>
+
+      // POST /user/profile/edit
+      function profileEdit() {}
+
+
+      // POST /user/profile/delete
+      function profileDelete() {}
+    </script>
+  </body>
+</html>

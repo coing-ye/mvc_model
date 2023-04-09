@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <%- include('include/include', { title: '회원가입' })%>
+  <body>
+    <h1>회원가입</h1>
+    <form name="form_register">
+      <div style="display:flex;">
+        <label for="userid">ID</label><br/>
+        <input id="userid" type="text" name="userid" maxlength = '10' placeholder="10자 이내" required/><br/>
+        <button tyle="button" onclick="verifyid();">중복검사</button>
+      </div>
+      <label for="password">Password</label>
+      <input id="password" type="password" name="pw" maxlength = '12' placeholder="12자 이내" required/><br />
+      <label for="nickname">Name </label>
+      <input id="nickname" type="text" name="name" maxlength = '10' placeholder="10자 이내" required/><br />
+      <button type="button" onclick="register();">Register</button>
+    </form>
+    <!-- TODO: href 속성값 설정하기 -->
+    <a href="/user/signin">Login</a>
+
+    <script>
+      // POST /user/signup
+      const form = document.forms['form_register'];
+      //ID 중복검사 추가 예정
+      // function verifyid(){
+        
+      // }
+      function register() {
+
+        if(window.confirm("ID: "+form.userid.value+"\nPWD: "+form.pw.value+"\nName: "+form.name.value+"\n입력하신 정보가 일치합니까?")){
+          axios({
+            method: "POST",
+            url: '/user/signup/write',
+            data:{
+              userid: form.userid.value,
+              pwd: form.pw.value,
+              name: form.name.value,
+            }
+          }).then((res) => {
+            console.log(res.data)
+            if(res.data == false){
+              alert("중복된 ID가 존재합니다. 다른 ID를 입력해 주십시오.");
+            }
+            else {
+              alert("회원가입이 완료되었습니다!\n반갑습니다 "+res.data+"님!\n다시 로그인하여 주십시오");
+              document.location.href = '/user/signin';
+            }
+
+          })
+        } else{
+          console.log("정보를 다시 입력해 주십시오.");
+        }
+        
+      }
+    </script>
+  </body>
+</html>
