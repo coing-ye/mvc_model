@@ -12,9 +12,6 @@ app.use(express.json());
 const userRouter = require('./routes/user');
 app.use('/user',userRouter);
 
-app.get('/profile',(req,res)=>{
-  res.render('profile');
-});
 
 app.get('*',(req,res)=>{
   res.render('404');
