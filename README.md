@@ -1,7 +1,10 @@
-# Node JS MVC 모델을 적용한 게시판의 각 기능 구현
+# Node JS MVC 모델을 적용한 각종 기능 구현
 
 ## user 폴더
 > 회원가입, 로그인 기능 구현. 회원 정보 수정 및 삭제 기능 추가 중
+
+## cookie 폴더
+> 쿠키 생성, 확인, 삭제를 간단히 구현
 
 ![image](https://user-images.githubusercontent.com/127190327/230763100-be4e9344-313c-4f4b-bbf7-b3bd3de4b550.png)
 
