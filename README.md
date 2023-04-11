@@ -40,6 +40,7 @@ INSERT INTO 'pracuser' (userid, pwd, name) values("root","4321","루트계정");
 ```
 
 ## 업데이트 내역
-
+* 0.1
+  * 쿠키 기능 mvc 모델로 변경 후 추가
 * 0.0
   * mvc 모델에서의 회원가입 및 로그인 기능 추가(캐쉬에 로그인 내역 미적용)
