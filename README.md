@@ -6,7 +6,6 @@
 ## cookie 폴더
 > 쿠키 생성, 확인, 삭제를 간단히 구현
 
-![image](https://user-images.githubusercontent.com/127190327/230763100-be4e9344-313c-4f4b-bbf7-b3bd3de4b550.png)
 
 * express에 mvc 모델을 적용시켜 구현. 코드 수정, 협업 용이
 * MySQL을 이용한 RDBMS 적용. 정규화 원칙 1NF 준수
